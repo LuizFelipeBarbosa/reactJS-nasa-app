@@ -7,10 +7,12 @@ function Footer(props) {
 		<footer className="fixed bottom-0 left-0 p-8 flex justify-between text-white w-full">
 			<div className="absolute inset-0 z-[-1] bg-gradient-to-t from-black to-transparent"></div>
 			<div className="flex-auto ">
-				<p className="text-xl font-[200]">
-					{"Photographer:"}
-					{author}
-				</p>
+				{author && (
+					<p className="text-xl font-[200]">
+						{"Photographer:"}
+						{author}
+					</p>
+				)}
 				<h2 className="text-4xl font-bold">{title}</h2>
 			</div>
 			<button

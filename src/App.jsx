@@ -3,10 +3,10 @@ import Main from "./components/Main";
 import Footer from "./components/Footer";
 import SideBar from "./components/SideBar";
 import LoadingPage from "./components/LoadingPage";
+import Shuffle from "./components/Shuffle";
 
 function App() {
 	const [data, setData] = useState(null);
-	const [loading, setLoading] = useState(false);
 	const [showSideBar, setShowSideBar] = useState(false);
 
 	function toggleSideBar() {
@@ -41,8 +41,24 @@ function App() {
 		fetchData();
 	}, []);
 
+	async function randomizeImage() {
+		setData(null);
+		const NASA_KEY = import.meta.env.VITE_NASA_API_KEY;
+		const url = `https://api.nasa.gov/planetary/apod?api_key=${NASA_KEY}&count=1`;
+
+		try {
+			const response = await fetch(url);
+			const apiData = await response.json();
+			setData(apiData[0]);
+			console.log(apiData);
+		} catch (error) {
+			console.error(error.message);
+		}
+	}
+
 	return (
 		<main className="flex h-screen">
+			<Shuffle randomizeImage={randomizeImage}></Shuffle>
 			{data ? (
 				<Main img={data?.hdurl} title={data?.title} />
 			) : (
