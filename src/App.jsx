@@ -58,7 +58,7 @@ function App() {
 
 	return (
 		<main className="flex h-screen">
-			<Shuffle randomizeImage={randomizeImage}></Shuffle>
+			{data && <Shuffle randomizeImage={randomizeImage}></Shuffle>}
 			{data ? (
 				<Main img={data?.hdurl} title={data?.title} />
 			) : (
