@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.transition-opacity {
+  transition: opacity 0.5s;
+}
+
+.transition-transform {
+  transition: transform 0.5s;
+}
